@@ -1,28 +1,66 @@
-# Pass JWT to Resolver with Context (Server-side)
+# Tech_Friends App
+## Overview
+Tech_Friends is a social networking application built using React, Express, GraphQL, JWT, Mongoose, and Bcrypt. The app allows users to create profiles, showcase their skills, and endorse the skills of their friends in the tech community.
 
-In this demo, you will verify if a token is valid and carry
+## Features
+User Authentication: Secure user authentication using JWT (JSON Web Tokens) and Bcrypt for password hashing.
 
-## Instructions
+Profile Creation: Users can create their profiles by signing up with essential details.
 
-* Run `npm install` and `npm run seed` to set up the database.
+Skill Endorsement: Showcase your skills and let your friends endorse them, creating a network of trusted and skilled individuals.
 
-* Open [server.js](server/server.js) and explain the following:
+Technologies Used
+React: Frontend library for building user interfaces.
 
-  * We can add another option to our Apollo Server configuration called `context`, which is a lot like middleware in Express.
+Express: Backend framework for building web applications.
 
-  * This will allow us to intercept any request to the server and check if there's a valid JWT before the request gets to the resolver.
+GraphQL: A query language for APIs, providing a more efficient and powerful alternative to traditional REST.
 
-* Open [auth.js](server/utils/auth.js) and explain the `authMiddleware` function:
+JWT (JSON Web Tokens): Used for secure user authentication and authorization.
 
-  * Whenever we make a request to our server, we will check if there's a token with the request and attempt to verify and decode it if there is.
+Mongoose: An ODM (Object Data Modeling) library for MongoDB and Node.js.
 
-  * We use the `return` statement to return the `req` object, either modified with user data or not modified at all, and the request will continue to go to its intended resolver function.
+Bcrypt: A library for hashing passwords to enhance security.
 
-* Open [resolvers.js](server/schemas/resolvers.js) and explain the following:
+Getting Started
+To get started with Tech_Friends locally, follow these steps:
 
-  * Any time we need to implement authentication on a query or mutation, we can add a third parameter called `context` to the resolver function.
+Clone the repository:
 
-  * The `context` object is whatever has been returned from our `authMiddleware` function, so it may or may not include a `user` property depending on the status of the JSON Web Token.
+bash
+Copy code
+git clone https://github.com/your-username/Tech_Friends.git
+Install dependencies for both the frontend and backend:
 
-  * If there is a `user` property, we can assume the user's token has been verified and the `user` property now holds data about the user that we stored in the token itself.
+bash
+Copy code
+## Navigate to the frontend directory
+cd Tech_Friends/frontend
+npm install
 
+## Navigate to the backend directory
+cd ../backend
+npm install
+Set up your MongoDB database and update the connection string in the backend's configuration.
+
+Run the application:
+
+bash
+Copy code
+# In the frontend directory
+npm start
+
+# In the backend directory
+npm start
+Access the application at http://localhost:3000 in your web browser.
+
+Contributing
+If you'd like to contribute to Tech_Friends, please follow the contribution guidelines.
+
+License
+This project is licensed under the MIT License.
+
+Acknowledgments
+Special thanks to the open-source community for the wonderful tools and libraries used in this project.
+Inspiration for this project came from the desire to create a platform that fosters collaboration and skill recognition within the tech community.
+Feel free to reach out if you have any questions or feedback!
